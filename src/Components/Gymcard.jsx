@@ -86,7 +86,7 @@ export default function GymCard() {
   className="min-h-screen flex items-center justify-center flex-col p-6 bg-cover bg-center"
   style={{ backgroundImage: `url(${BackgroundImage})` }}
 >
-  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-100 mb-10 hover:text-orange-500 tansition-all duration-200 drop-shadow-lg text-center">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-orange-500 hover:text-orange-600 mb-10  tansition-all duration-200 drop-shadow-lg text-center">
     Your Profile
   </h2>
 
@@ -98,7 +98,7 @@ export default function GymCard() {
     <div className="w-full max-w-md flex justify-center">
       <div
         key={userData.id}
-        className="relative w-full shadow-amber-50  rounded-xl overflow-hidden shadow-lg transform hover:[transform:scale3d(1.2,1.2,1.2)] transition duration-300 ring-1 ring-white/10"
+        className="relative w-full shadow-amber-50  rounded-xl overflow-hidden shadow-lg transform hover:scale-110 transition duration-300 ring-1 ring-white/10"
         style={{
           background:
             "linear-gradient(to bottom right, #000000, #9343ea, #cfcdc9)",
