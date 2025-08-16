@@ -1,4 +1,4 @@
-import background from "../assets/Images/pexels-kangangaphoto243-6418742.jpg";
+import background from "../assets/Images/pexels-kangangaphoto243-6418742.webp";
 import equip from "../assets/Images/logo_1-removebg-preview.png";
 import nutrition from "../assets/Images/logo_2-removebg-preview.png";
 import plan from "../assets/Images/logo_3-removebg-preview.png";
@@ -15,7 +15,7 @@ import squat from "../assets/Images/squat.jpg";
 import rope from "../assets/Images/rope.jpg";
 import oilyoga from "../assets/Images/oilyoga.jpg";
 import hero from "../assets/Images/hero.jpg";
-import back from "../assets/Images/back.jpg"
+import back from "../assets/Images/back.webp"
 import powder from "../assets/Images/powder.jpg"
 import gymvideo from "../assets/Images/gymvideo.mp4"
 import button from "../assets/Images/button.png"
