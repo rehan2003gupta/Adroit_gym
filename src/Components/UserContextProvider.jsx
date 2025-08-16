@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
 import UserContext from "./Store";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase"; // make sure path is correct
+import { auth } from "./firebase"; 
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/Animation/Material wave loading.json"; // path to your JSON
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Listen to Firebase auth state changes
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser); // Restore logged-in user
-      } else {
-        setUser(null); // No user -> logged out
-      }
+      setUser(currentUser || null);
       setLoading(false);
     });
 
-    // Cleanup on unmount
     return () => unsubscribe();
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>; // Prevent flicker while Firebase restores session
+    return (
+      <div className="flex justify-center items-center h-screen bg-gray-100">
+        <Lottie
+          animationData={loadingAnimation}
+          loop={true}
+          autoplay={true}
+          style={{ height: 150, width: 150 }}
+        />
+      </div>
+    );
   }
 
   return (

@@ -1,23 +1,25 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyCziA3uyeBi6kG4-PmrANm6ORxTo-AUAr4",
+  authDomain: "adroit-1c7ea.firebaseapp.com",
+  projectId: "adroit-1c7ea",
+  storageBucket: "adroit-1c7ea.appspot.com",  // ✅ Fixed
+  messagingSenderId: "461034211657",
+  appId: "1:461034211657:web:b2ea50bb72f7efb9c03298",
+  measurementId: "G-WPVCZZD1QB"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-// analytics should only run in browser
-try { getAnalytics(app); } catch (_) {}
-
+// Firebase services
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
