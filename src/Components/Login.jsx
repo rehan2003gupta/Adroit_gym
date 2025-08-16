@@ -100,7 +100,7 @@ export default function Login({ onClose }) {
         <form onSubmit={handleAuth} className="flex flex-col gap-3">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Username/Email"
             className="border p-2 rounded"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
