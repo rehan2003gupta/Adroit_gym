@@ -4,6 +4,7 @@ import Images from "../../assets/indexes";
 import Push from "../Push/Push";
 import Price from "../Price/Price";
 import { useNavigate } from "react-router-dom";
+import LazyBackground from "../LazyBackground";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
 const {
   back,
@@ -21,7 +22,7 @@ const {
   rope,
   oilyoga,
 } = Images;
-import Icon from "../Icon"
+import Icon from "../Icon";
 
 const feature = [
   {
@@ -58,7 +59,7 @@ const feature = [
 
 function Home() {
   const images = [back, background];
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const goToPage = () => {
     navigate("/contact"); // Change "/about" to your desired route
   };
@@ -73,38 +74,34 @@ function Home() {
   return (
     <>
       {/* Hero Section */}
-      <Icon className="right-[3rem] justify-end mt-4 absolute z-10"/>
+      <Icon className="right-[3rem] justify-end mt-4 absolute z-10" />
 
-      <div
-        style={{
-          backgroundImage: `url(${images[currentIndex]})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          width: "100%",
-        }}
-        className="items-center flex-col flex transition-all duration-200 justify-center"
-      >
-        {" "}
+      <LazyBackground src={images[currentIndex]}>
         <AnimatedCard delay={0} direction="left">
-          <p className="text-3xl text-white font-medium">Shape your body </p>
+          <p className="text-3xl text-white font-medium">Shape your body</p>
         </AnimatedCard>
+
         <AnimatedCard delay={300} direction="right">
           <p className="mt-3 text-7xl text-white font-extrabold text-center">
             BE <span className="text-orange-600">STRONG</span>
           </p>
         </AnimatedCard>
+
         <AnimatedCard delay={500} direction="left">
           <p className="text-7xl text-white text-center font-extrabold">
             TRAINING HARD
           </p>
         </AnimatedCard>
+
         <AnimatedCard delay={200} direction="bottom">
-          <button onClick={goToPage} className="bg-orange-600 mt-4 px-7 py-3 rounded text-white hover:bg-white hover:text-orange-600 font-medium transition-all duration-200 border border-transparent hover:border-orange-600">
+          <button
+            onClick={goToPage}
+            className="bg-orange-600 mt-4 px-7 py-3 rounded text-white hover:bg-white hover:text-orange-600 font-medium transition-all duration-200 border border-transparent hover:border-orange-600"
+          >
             Get Info
           </button>
         </AnimatedCard>
-      </div>
+      </LazyBackground>
 
       {/* Features Section */}
       <Push />
@@ -118,7 +115,6 @@ function Home() {
             </p>
           </div>
           <div className="bg-black text-white flex flex-col items-center py-10">
-            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full  max-w-5xl p-4">
               {feature.map((item, index) => (
                 <AnimatedCard
@@ -155,19 +151,22 @@ function Home() {
         className="items-center flex-col flex justify-center"
       >
         <AnimatedCard>
-        <p className="font-bold text-white text-5xl shadow-2xl text-center shadow-gray-500">
-          REGISTRATION NOW TO GET MORE DEALS
-        </p>
+          <p className="font-bold text-white text-5xl shadow-2xl text-center shadow-gray-500">
+            REGISTRATION NOW TO GET MORE DEALS
+          </p>
         </AnimatedCard>
         <AnimatedCard delay={100}>
-        <p className="font-medium mt-4 text-white text-2xl shadow-2xl text-center shadow-gray-500">
-          WHERE HEALTH, BEAUTY AND FITNESS MEET.
-        </p>
+          <p className="font-medium mt-4 text-white text-2xl shadow-2xl text-center shadow-gray-500">
+            WHERE HEALTH, BEAUTY AND FITNESS MEET.
+          </p>
         </AnimatedCard>
         <AnimatedCard delay={200}>
-        <button onClick={goToPage} className="border-1 border-orange-600 text-white  mt-3 pl-4 pr-4 pt-3 pb-3 transition-all duration-300 hover:bg-orange-600 font-medium  ">
-          APPOINTMENT
-        </button>
+          <button
+            onClick={goToPage}
+            className="border-1 border-orange-600 text-white  mt-3 pl-4 pr-4 pt-3 pb-3 transition-all duration-300 hover:bg-orange-600 font-medium  "
+          >
+            APPOINTMENT
+          </button>
         </AnimatedCard>
       </div>
       {/*Pricing section */}
@@ -175,30 +174,38 @@ function Home() {
       {/*Advertisement Photos */}
       <div className="bg-black w-full">
         <AnimatedCard delay={150}>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 border-b-4 border-gray-700">
-        <img
-          src={rope}
-          alt=""
-          className="w-full aspect-[4/3] border-r-4 border-gray-700 gap-1 object-cover"
-        />
-        <img
-          src={squat}
-          alt=""
-          className="w-full aspect-[4/3] border-r-4 border-gray-700 object-cover"
-        />
-        <img src={hero} alt="" className="w-full aspect-[4/3] object-cover" />
-      </div>
-      </AnimatedCard>
-      <AnimatedCard delay={150}>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
-        <img
-          src={oilyoga}
-          alt=""
-          className="w-full aspect-[4/3] border-r-4 border-gray-700 object-cover"
-        />
-        <img src={lift} alt="" className="w-full aspect-[4/3] object-cover" />
-      </div>
-      </AnimatedCard>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 border-b-4 border-gray-700">
+            <img
+              src={rope}
+              alt=""
+              className="w-full aspect-[4/3] border-r-4 border-gray-700 gap-1 object-cover"
+            />
+            <img
+              src={squat}
+              alt=""
+              className="w-full aspect-[4/3] border-r-4 border-gray-700 object-cover"
+            />
+            <img
+              src={hero}
+              alt=""
+              className="w-full aspect-[4/3] object-cover"
+            />
+          </div>
+        </AnimatedCard>
+        <AnimatedCard delay={150}>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
+            <img
+              src={oilyoga}
+              alt=""
+              className="w-full aspect-[4/3] border-r-4 border-gray-700 object-cover"
+            />
+            <img
+              src={lift}
+              alt=""
+              className="w-full aspect-[4/3] object-cover"
+            />
+          </div>
+        </AnimatedCard>
       </div>
       {/*Crousel Part */}
 
@@ -216,7 +223,10 @@ function Home() {
 
           {/* Right side */}
           <div>
-            <button onClick={goToPage} className="border border-orange-600 text-white px-6 py-3 transition-all duration-300 hover:bg-orange-600 font-medium w-full sm:w-auto">
+            <button
+              onClick={goToPage}
+              className="border border-orange-600 text-white px-6 py-3 transition-all duration-300 hover:bg-orange-600 font-medium w-full sm:w-auto"
+            >
               APPOINTMENT
             </button>
           </div>
