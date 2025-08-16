@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import Images from "../../assets/indexes";
 import Push from "../Push/Push";
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Icon from "../Icon"
+import Icon from "../Icon";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
+import LazyBackground from "../LazyBackground";
 import { useNavigate } from "react-router-dom";
 const { powder, gymvideo, stretch, button, t1, t2, t3, t4 } = Images;
 
@@ -47,7 +48,7 @@ function About() {
   const play = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [animations, setAnimations] = useState("animate-ping");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const goToPage = () => {
     navigate("/contact"); // Change "/about" to your desired route
   };
@@ -85,22 +86,14 @@ function About() {
   return (
     <>
       {/* Hero Section */}
-      <Icon className="right-[3rem] justify-end mt-4 absolute z-10"/>
-      <div
-        style={{
-          backgroundImage: `url(${powder})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          width: "100%",
-        }}
-        className="flex flex-col items-center justify-center transition-all duration-200"
-      ><AnimatedCard delay={200}>
-        <p className="text-4xl sm:text-5xl md:text-6xl text-white text-center font-extrabold px-4">
-          ABOUT <span className="text-orange-600">US</span>
-        </p>
+      <Icon className="right-[3rem] justify-end mt-4 absolute z-10" />
+      <LazyBackground src={powder} height="100vh">
+        <AnimatedCard delay={200}>
+          <p className="text-4xl sm:text-5xl md:text-6xl text-white text-center font-extrabold px-4">
+            ABOUT <span className="text-orange-600">US</span>
+          </p>
         </AnimatedCard>
-      </div>
+      </LazyBackground>
 
       <Push />
 
@@ -137,16 +130,16 @@ function About() {
           <div className="max-w-lg text-start md:text-left">
             <AnimatedCard delay={200}>
               <h2 className="text-xl sm:text-3xl font-medium mb-4">
-              About <span className="text-orange-600">Us</span>
-            </h2>
-            <p className="text-base font-light sm:text-base">
-              At Adroit Gym, we believe fitness is more than a routine—it’s a
-              lifestyle. Our expert trainers, cutting-edge equipment, and
-              motivating environment empower you to achieve your health goals
-              with confidence. Whether you're building strength, improving
-              endurance, or just starting your journey, Adroit is here to guide
-              every step.
-            </p>
+                About <span className="text-orange-600">Us</span>
+              </h2>
+              <p className="text-base font-light sm:text-base">
+                At Adroit Gym, we believe fitness is more than a routine—it’s a
+                lifestyle. Our expert trainers, cutting-edge equipment, and
+                motivating environment empower you to achieve your health goals
+                with confidence. Whether you're building strength, improving
+                endurance, or just starting your journey, Adroit is here to
+                guide every step.
+              </p>
             </AnimatedCard>
           </div>
         </div>
@@ -154,31 +147,34 @@ function About() {
 
       {/* Registration */}
       <div
-              style={{
-                backgroundImage: `url(${stretch})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "100vh",
-                width: "100%",
-              }}
-              className="items-center flex-col flex justify-center"
-            >
-              <AnimatedCard>
-              <p className="font-bold text-white text-5xl shadow-2xl text-center shadow-gray-500">
-                REGISTRATION NOW TO GET MORE DEALS
-              </p>
-              </AnimatedCard>
-              <AnimatedCard delay={100}>
-              <p className="font-medium mt-4 text-white text-2xl shadow-2xl text-center shadow-gray-500">
-                WHERE HEALTH, BEAUTY AND FITNESS MEET.
-              </p>
-              </AnimatedCard>
-              <AnimatedCard delay={200}>
-              <button onClick={goToPage} className="border-1 border-orange-600 text-white  mt-3 pl-4 pr-4 pt-3 pb-3 transition-all duration-300 hover:bg-orange-600 font-medium  ">
-                APPOINTMENT
-              </button>
-              </AnimatedCard>
-            </div>
+        style={{
+          backgroundImage: `url(${stretch})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          width: "100%",
+        }}
+        className="items-center flex-col flex justify-center"
+      >
+        <AnimatedCard>
+          <p className="font-bold text-white text-5xl shadow-2xl text-center shadow-gray-500">
+            REGISTRATION NOW TO GET MORE DEALS
+          </p>
+        </AnimatedCard>
+        <AnimatedCard delay={100}>
+          <p className="font-medium mt-4 text-white text-2xl shadow-2xl text-center shadow-gray-500">
+            WHERE HEALTH, BEAUTY AND FITNESS MEET.
+          </p>
+        </AnimatedCard>
+        <AnimatedCard delay={200}>
+          <button
+            onClick={goToPage}
+            className="border-1 border-orange-600 text-white  mt-3 pl-4 pr-4 pt-3 pb-3 transition-all duration-300 hover:bg-orange-600 font-medium  "
+          >
+            APPOINTMENT
+          </button>
+        </AnimatedCard>
+      </div>
 
       {/* Testimonial Carousel */}
       <div className="relative w-full bg-black text-white py-12 pt-24 flex flex-col items-center">

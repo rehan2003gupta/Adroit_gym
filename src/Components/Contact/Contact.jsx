@@ -5,6 +5,7 @@ import { collection, addDoc } from "firebase/firestore";
 import Images from "../../assets/indexes";
 import Icon from "../Icon";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
+import LazyBackground from "../LazyBackground";
 
 const { background } = Images;
 
@@ -24,7 +25,7 @@ function Contact() {
         email,
         query,
         comment,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
       setMessage("Your query has been submitted successfully!");
       setName("");
@@ -39,28 +40,21 @@ function Contact() {
   return (
     <>
       <Icon className="right-[3rem] justify-end mt-4 absolute z-10" />
-      <div
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "50vh",
-          width: "100%",
-        }}
-        className="items-center flex-col flex transition-all duration-200 justify-center"
-      >
+      <LazyBackground src={background} height="50vh">
         <AnimatedCard delay={200}>
-          <p className="text-white uppercase text-5xl font-extrabold ">
-            Contact <span className="text-orange-600 "> Us</span>
+          <p className="text-white uppercase text-5xl font-extrabold">
+            Contact <span className="text-orange-600">Us</span>
           </p>
         </AnimatedCard>
-      </div>
+      </LazyBackground>
 
       <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
         <div className="flex flex-col md:flex-row gap-12 w-full max-w-6xl py-12 md:py-20">
           {/* Left Side */}
           <div className="md:w-1/2">
-            <p className="text-orange-600 uppercase font-medium mb-2">Contact Us</p>
+            <p className="text-orange-600 uppercase font-medium mb-2">
+              Contact Us
+            </p>
             <h2 className="text-3xl font-extrabold mb-8">Get in Touch</h2>
 
             <div className="flex items-start gap-4 mb-6">
@@ -124,7 +118,9 @@ function Contact() {
               >
                 SUBMIT
               </button>
-              {message && <p className="text-sm mt-2 text-green-500">{message}</p>}
+              {message && (
+                <p className="text-sm mt-2 text-green-500">{message}</p>
+              )}
             </form>
           </div>
         </div>

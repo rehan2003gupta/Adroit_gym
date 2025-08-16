@@ -3,6 +3,7 @@ const { background, tt1, tt2, tt3, tt4, tt5, t1 } = Images;
 import { useNavigate } from "react-router-dom";
 import Icon from "../Icon";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
+import LazyBackground from "../LazyBackground"
 function Team() {
   const navigate=useNavigate();
   const goToPage = () => {
@@ -45,22 +46,14 @@ function Team() {
     <>
       {/* Hero Section */}
       <Icon className="right-[3rem] justify-end mt-4 absolute z-10" />
-      <div
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "50vh",
-          width: "100%",
-        }}
-        className="items-center flex-col flex transition-all duration-200 justify-center"
-      >
-        <AnimatedCard delay={150}>
-          <p className="mt-3 text-5xl text-white font-extrabold text-center">
-            OUR <span className="text-orange-600">TEAM</span>
-          </p>
-        </AnimatedCard>
-      </div>
+      <LazyBackground src={background} height="50vh">
+  <AnimatedCard delay={150}>
+    <p className="mt-3 text-5xl text-white font-extrabold text-center">
+      OUR <span className="text-orange-600">TEAM</span>
+    </p>
+  </AnimatedCard>
+</LazyBackground>
+
       <div className="pb-10 pt-10 flex flex-col sm:flex-row items-center justify-around gap-4 px-4 bg-black">
         {/* Left side */}
 

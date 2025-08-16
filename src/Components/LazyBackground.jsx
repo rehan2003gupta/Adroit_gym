@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const LazyBackground = ({ src, children }) => {
+const LazyBackground = ({ src, children, height = "100vh", className = "" }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -12,14 +12,19 @@ const LazyBackground = ({ src, children }) => {
   return (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${src}) center/cover no-repeat`,
-        height: "100vh",
+        backgroundImage: loaded ? `url(${src})` : "none", // Only set when loaded
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height,
         width: "100%",
-        filter: loaded ? "none" : "blur(20px)", // blurred until loaded
-        transition: "filter 0.6s ease-out",
+        transition: "background-image 0.5s ease-in-out", // smooth fade-in
       }}
-      className="flex flex-col items-center justify-center transition-all duration-200"
+      className={`flex flex-col items-center justify-center object-contain transition-all duration-200 ${className}`}
     >
+      {/* Blur/fade overlay while loading */}
+      {!loaded && (
+        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+      )}
       {children}
     </div>
   );
