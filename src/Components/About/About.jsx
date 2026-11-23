@@ -103,7 +103,7 @@ function About() {
         <div className="w-full lg:w-1/2 relative h-64 md:h-auto">
           <video
             ref={play}
-            
+            //autoplay
             muted
             loop
             playsInline
