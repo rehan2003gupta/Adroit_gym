@@ -103,9 +103,11 @@ function About() {
         <div className="w-full lg:w-1/2 relative h-64 md:h-auto">
           <video
             ref={play}
+            autoPlay
             muted
             loop
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover"
           >
             <source src={gymvideo} type="video/mp4" />
