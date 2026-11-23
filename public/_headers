@@ -1,0 +1,7 @@
+# Vite-generated assets (hashed filenames)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Gym video (version its filename when replacing it)
+/videos/*
+  Cache-Control: public, max-age=2592000
